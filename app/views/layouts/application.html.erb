@@ -13,10 +13,8 @@
     <div class="navbar-header">
       <%= link_to 'Video Blog App', root_path, class: 'navbar-brand' %>
     </div>
-    <div id="navbar">
-      <ul class="nav navbar-nav">
-
-      </ul>
+    <div class="navbar-text">
+        <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), :class => 'navbar-link' %>
     </div>
     <div class="navbar-text pull-right">
       <% if user_signed_in? %>
