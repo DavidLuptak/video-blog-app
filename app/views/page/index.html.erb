@@ -1,1 +1,17 @@
-<%= render 'welcome' %>
+<% if user_signed_in? %>
+    <div class="page-header">
+      <h1>Here is some info about you...</h1>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <ul>
+          <li><strong>Name:</strong> <%= current_user.name %></li>
+          <li><strong>Email:</strong> <%= current_user.email %></li>
+          <li><strong>Uid:</strong> <%= current_user.uid %></li>
+          <li><strong>URL:</strong> <%= current_user.url %></li>
+        </ul>
+      </div>
+    </div>
+<% else %>
+    <%= render 'welcome' %>
+<% end %>
