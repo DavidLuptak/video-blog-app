@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'omniauth-google-oauth2'
+gem 'rolify'
+gem 'cancancan'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
