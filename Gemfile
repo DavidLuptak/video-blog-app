@@ -7,6 +7,7 @@ gem 'rolify'
 gem 'cancancan'
 gem 'yt', '~> 0.25.5'
 gem 'rails-observers'
+gem 'simple_hashtag'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

@@ -1,0 +1,10 @@
+<h1><%= params[:hashtag] %></h1>
+<% if @hashtagged %>
+    <% @hashtagged.each do |hashtagged| %>
+        <% view    = hashtagged.class.to_s.underscore.pluralize %>
+        <% partial = hashtagged.class.to_s.underscore %>
+        <%= render "#{view}/#{partial}", {partial.to_sym => hashtagged} %>
+    <% end -%>
+<% else -%>
+    <p>There is no match for the <em><%= params[:hashtag] %></em> hashtag.</p>
+<% end -%>

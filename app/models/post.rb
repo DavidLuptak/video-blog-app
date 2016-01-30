@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+  include SimpleHashtag::Hashtaggable
+  hashtaggable_attribute :description
+
   belongs_to :user
   has_one :video
 
