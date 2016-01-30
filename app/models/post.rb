@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   has_one :video
+
+  accepts_nested_attributes_for :video
 end

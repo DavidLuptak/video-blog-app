@@ -1,14 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1>Here is some info about your post:</h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul>
+      <li><strong>Title:</strong> <%= @post.title %></li>
+      <li><strong>Description:</strong> <%= @post.description %></li>
+    </ul>
+    <div class="page-header">
+      <h2>And especially your video:</h2>
+    </div>
+    <ul>
+      <li><strong>Link:</strong> <%= @post.video.link %></li>
+      <li><strong>Title:</strong> <%= @post.video.title %></li>
+      <li><strong>Uid:</strong> <%= @post.video.uid %></li>
+      <li><strong>Published at:</strong> <%= @post.video.published_at %></li>
+      <li><strong>Thumbnail url:</strong> <%= @post.video.thumbnail_url %></li>
+      <li><strong>Category title:</strong> <%= @post.video.category_title %></li>
+      <li><strong>View count:</strong> <%= @post.video.view_count %></li>
+      <li><strong>Like count:</strong> <%= @post.video.like_count %></li>
+      <li><strong>Dislike count:</strong> <%= @post.video.dislike_count %></li>
+      <li><strong>Duration:</strong> <%= @post.video.duration %></li>
+    </ul>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
+</div>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
