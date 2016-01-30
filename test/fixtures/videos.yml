@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  link: MyString
+  title: MyString
+  uid: MyString
+  published_at: 2016-01-29 23:06:20
+  thumbnail_url: MyString
+  category_title: MyString
+  category_title: 1
+  like_count: 1
+  dislike_count: 1
+  duration: 1
+
+two:
+  link: MyString
+  title: MyString
+  uid: MyString
+  published_at: 2016-01-29 23:06:20
+  thumbnail_url: MyString
+  category_title: MyString
+  category_title: 1
+  like_count: 1
+  dislike_count: 1
+  duration: 1

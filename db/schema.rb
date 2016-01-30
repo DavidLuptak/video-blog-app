@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129140316) do
+ActiveRecord::Schema.define(version: 20160129220620) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -66,5 +66,24 @@ ActiveRecord::Schema.define(version: 20160129140316) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "link"
+    t.string   "title"
+    t.string   "uid"
+    t.datetime "published_at"
+    t.string   "thumbnail_url"
+    t.string   "category_title"
+    t.integer  "view_count"
+    t.integer  "like_count"
+    t.integer  "dislike_count"
+    t.integer  "duration"
+    t.integer  "post_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "videos", ["post_id"], name: "index_videos_on_post_id"
+  add_index "videos", ["uid"], name: "index_videos_on_uid"
 
 end

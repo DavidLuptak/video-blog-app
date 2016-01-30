@@ -22,5 +22,8 @@ module VideoBlogApp
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Register a new observer
+    config.active_record.observers = :video_observer
   end
 end

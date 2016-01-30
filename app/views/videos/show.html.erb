@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @video.link %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @video.title %>
+</p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @video.uid %>
+</p>
+
+<p>
+  <strong>Published at:</strong>
+  <%= @video.published_at %>
+</p>
+
+<p>
+  <strong>Thumbnail url:</strong>
+  <%= @video.thumbnail_url %>
+</p>
+
+<p>
+  <strong>Category title:</strong>
+  <%= @video.category_title %>
+</p>
+
+<p>
+  <strong>View count:</strong>
+  <%= @video.view_count %>
+</p>
+
+<p>
+  <strong>Like count:</strong>
+  <%= @video.like_count %>
+</p>
+
+<p>
+  <strong>Dislike count:</strong>
+  <%= @video.dislike_count %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @video.duration %>
+</p>
+
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>

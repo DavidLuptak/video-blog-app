@@ -5,6 +5,8 @@ gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'rolify'
 gem 'cancancan'
+gem 'yt', '~> 0.25.5'
+gem 'rails-observers'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

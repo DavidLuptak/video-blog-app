@@ -15,7 +15,9 @@
     </div>
     <div class="navbar-text">
       <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), :class => 'navbar-link' %> |
-      <%= link_to 'Posts', posts_path, class: 'navbar-link' %>
+      <%= link_to 'Posts', posts_path, class: 'navbar-link' %> |
+      <%= link_to 'Videos', videos_path %> |
+      <%= link_to 'Add Video', new_video_path %>
     </div>
     <div class="navbar-text pull-right">
       <% if user_signed_in? %>

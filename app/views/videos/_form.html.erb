@@ -1,0 +1,57 @@
+<%= form_for(@video) do |f| %>
+  <% if @video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+      <% @video.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :uid %><br>
+    <%= f.text_field :uid %>
+  </div>
+  <div class="field">
+    <%= f.label :published_at %><br>
+    <%= f.datetime_select :published_at %>
+  </div>
+  <div class="field">
+    <%= f.label :thumbnail_url %><br>
+    <%= f.text_field :thumbnail_url %>
+  </div>
+  <div class="field">
+    <%= f.label :category_title %><br>
+    <%= f.text_field :category_title %>
+  </div>
+  <div class="field">
+    <%= f.label :view_count %><br>
+    <%= f.number_field :view_count %>
+  </div>
+  <div class="field">
+    <%= f.label :like_count %><br>
+    <%= f.number_field :like_count %>
+  </div>
+  <div class="field">
+    <%= f.label :dislike_count %><br>
+    <%= f.number_field :dislike_count %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.number_field :duration %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
