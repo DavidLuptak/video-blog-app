@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   has_one :video
+  has_many :comments, dependent: :destroy
 
   accepts_nested_attributes_for :video
 
