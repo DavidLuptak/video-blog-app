@@ -23,6 +23,12 @@
       <li><strong>Dislike count:</strong> <%= @post.video.dislike_count %></li>
       <li><strong>Duration:</strong> <%= @post.video.duration %></li>
     </ul>
+    <div class="page-header">
+      <h2>And author:</h2>
+    </div>
+    <ul>
+      <li><strong>Email:</strong> <%= User.find(@post.user_id).email %></li>
+    </ul>
   </div>
 
 </div>
