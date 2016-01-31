@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   get 'hashtags/',         to: 'hashtags#index',     as: :hashtags
   get 'hashtags/:hashtag', to: 'hashtags#show',      as: :hashtag
 
-  resources :videos
+  resources :videos, only: [:index, :show, :new, :create, :destroy]
   resources :posts do
     resources :comments
   end
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users, only: [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.

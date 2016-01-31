@@ -1,5 +1,5 @@
 class VideoObserver < ActiveRecord::Observer
-  UNKNOWN = 'unknown'
+  UNKNOWN = 'unknown'.freeze
 
   def before_save(resource)
     video = Yt::Video.new url: resource.link

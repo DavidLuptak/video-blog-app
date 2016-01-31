@@ -26,28 +26,22 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
 
-    respond_to do |format|
-      if @video.save
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
-        format.json { render :show, status: :created, location: @video }
-      else
-        format.html { render :new }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
-      end
+    if @video.save
+      flash[:default] = 'Video was successfully created.'
+      redirect_to @video
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /videos/1
   # PATCH/PUT /videos/1.json
   def update
-    respond_to do |format|
-      if @video.update(video_params)
-        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
-        format.json { render :show, status: :ok, location: @video }
-      else
-        format.html { render :edit }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
-      end
+    if @video.update(video_params)
+      flash[:default] = 'Video was successfully updated.'
+      redirect_to @video
+    else
+      render :edit
     end
   end
 
@@ -55,20 +49,19 @@ class VideosController < ApplicationController
   # DELETE /videos/1.json
   def destroy
     @video.destroy
-    respond_to do |format|
-      format.html { redirect_to videos_url, notice: 'Video was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:default] = 'Video was successfully destroyed.'
+    redirect_to videos_url
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_video
-      @video = Video.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def video_params
-      params.require(:video).permit(:link) # (:link, :title, :uid, :published_at, :thumbnail_url, :category_title, :view_count, :like_count, :dislike_count, :duration)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_video
+    @video = Video.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def video_params
+    params.require(:video).permit(:link)
+  end
 end
