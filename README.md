@@ -16,5 +16,20 @@ It's final project for course [Development in Ruby](https://github.com/municz/st
 10. Users logged in via Google account can like the video (liking videos on YouTube) through this blog. [NYI]
 ```
 
+## Installation & Usage
+### Google API Setup
+Refers to https://github.com/zquestz/omniauth-google-oauth2#google-api-setup.
+(IMHO is not necessary the last step)
+
+### Google API Credentials Setup
+On the Create client ID page select `Web application` as an application type. And now the most important things follow:
+In the restrictions section, type `http://localhost:3000` into the field Authorized JavaScript origins, and `http://localhost:3000/users/auth/google_oauth2/callback` into field Authorized redirect URIs.
+Click Create and in your IDE define environment variables, particularly for this project:
+```
+GOOGLE_CLIENT_ID = <your client ID>
+GOOGLE_CLIENT_SECRET = <your client secret>.
+```
+Finally, start rails development server at [http://localhost:3000](http://localhost:3000).
+
 ## Heroku deployment
 Application will be available at heroku server.
