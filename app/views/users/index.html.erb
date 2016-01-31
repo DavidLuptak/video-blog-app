@@ -1,0 +1,43 @@
+<h1>Listing Users</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Registration date</th>
+    <th>Email</th>
+    <th>Role</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= user.created_at.to_formatted_s(:long) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.roles.first.name %></td>
+        <td>
+        <div class="dropdown">
+          <a class="dropdown-toggle" aria-expanded="false" role="button" data-toggle="dropdown" href="#">
+            Change role <!--not implemented yet-->
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <% Role.all.each do |role| %>
+                <li>
+                  <%= link_to users_path, data: { confirm: 'Are you sure?' } do %>
+                      <%= role.name %>
+                      <% if user.has_role? role.name %>
+                          <small class="text-muted">(current)</small>
+                      <% end %>
+                  <% end %>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
