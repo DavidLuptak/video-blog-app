@@ -22,14 +22,19 @@ Refers to https://github.com/zquestz/omniauth-google-oauth2#google-api-setup.
 (IMHO is not necessary the last step)
 
 ### Google API Credentials Setup
-On the Create client ID page select `Web application` as an application type. And now the most important things follow:
-In the restrictions section, type `http://localhost:3000` into the field Authorized JavaScript origins, and `http://localhost:3000/users/auth/google_oauth2/callback` into field Authorized redirect URIs.
+On the Create client ID page select `Web application` as an application type. In the restrictions section, type `http://localhost:3000` into the field Authorized JavaScript origins, and `http://localhost:3000/users/auth/google_oauth2/callback` into the field Authorized redirect URIs.
 Click Create and in your IDE define environment variables, particularly for this project:
 ```
 GOOGLE_CLIENT_ID = <your client ID>
 GOOGLE_CLIENT_SECRET = <your client secret>.
 ```
 Finally, start rails development server at [http://localhost:3000](http://localhost:3000).
+
+### YouTube API Setup
+Refers to https://github.com/Fullscreen/yt#configuring-your-app. We just need to retrieve public data from YouTube, so Server API key is enough for now. Particularly for this project, define environment variable:
+```
+API_KEY = <your API key>
+```
 
 ## Heroku deployment
 Application will be available at heroku server.
