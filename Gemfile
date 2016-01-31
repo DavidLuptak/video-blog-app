@@ -8,6 +8,7 @@ gem 'cancancan'
 gem 'yt', '~> 0.25.5'
 gem 'rails-observers'
 gem 'simple_hashtag'
+gem 'exception_notification'
 
 gem 'rubocop', require: false
 
@@ -55,4 +56,10 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+  ruby '2.2.0'
 end

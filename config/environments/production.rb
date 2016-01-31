@@ -76,4 +76,24 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+    email: {
+      email_prefix: '[VIDEO_BLOG_APP] ',
+      sender_address: %{"exception" <notification@#{ENV['EMAIL_HOST']}>},
+      exception_recipients: %w(ENV['DEVELOPER_EMAIL'])
+    }
+
+  config.action_mailer.smtp_settings = {
+    port:       587,
+    address:    'sandboxab0ec433ebee44f0842974cf64b262d6.mailgun.org',
+    user_name:  ENV['MAILGUN_USERNAME'],
+    password:   ENV['MAILGUN_PASSWORD']
+  }
+  config.action_mailer.default_url_options = {
+    host: ENV['EMAIL_HOST']
+  }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
 end
