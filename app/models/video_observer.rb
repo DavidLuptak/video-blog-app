@@ -12,7 +12,7 @@ class VideoObserver < ActiveRecord::Observer
     resource.like_count = video.like_count
     resource.dislike_count = video.dislike_count
     resource.duration = video.duration
-  rescue Yt::Errors::NoItems
+  rescue # Yt::Errors::NoItems
     resource.title = UNKNOWN
     resource.uid = UNKNOWN
     resource.published_at = Time.now
