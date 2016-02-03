@@ -5,7 +5,10 @@ class VideosController < ApplicationController
   # GET /videos.json
   def index
     @videos = Video.order('created_at DESC')
+    @categories = Category.all
+    @videos= params[:name].nil? ? Video.all : @videos.select{|v| v.category_title == params[:name]}
   end
+
 
   # GET /videos/1
   # GET /videos/1.json

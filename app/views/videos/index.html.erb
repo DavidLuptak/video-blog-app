@@ -1,7 +1,16 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+<h1 class="text-center alert">Categories</h1>
+<div class="row">
+<div class="col-xs-12 text-center">
+      <% @categories.each do |cat| %>
+      <a class="btn btn-default" href='/videos/filter/<%=cat.name%>'>&nbsp <%= cat.name %> &nbsp </a>
+      <% end %>
+    </div>
 
-<h1>Listing Videos</h1>
-
+</div>
+</div>
+<!--
 <table>
   <thead>
     <tr>
@@ -42,12 +51,12 @@
     <% end %>
   </tbody>
 </table>
-
+-->
 <br>
 
 <!--<%= link_to 'New Video', new_video_path %>-->
 
-<div class="jumbotron">
+<!--<div class="jumbotron">
   <div class="container">
     <h1>Share your videos with the world!</h1>
     <p>Click the button below to share your video from YouTube.</p>
@@ -55,7 +64,7 @@
       <%= link_to 'Add video now!', new_video_path, class: 'btn btn-primary btn-lg' %>
     </p>
   </div>
-</div>
+</div> -->
 
 <% if @videos.any? %>
     <div class="container">
