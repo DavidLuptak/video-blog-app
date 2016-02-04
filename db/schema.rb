@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130153459) do
+ActiveRecord::Schema.define(version: 20160203213418) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_videos", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "video_id",    null: false
+  end
+
+  add_index "categories_videos", ["category_id", "video_id"], name: "index_categories_videos_on_category_id_and_video_id"
+  add_index "categories_videos", ["video_id", "category_id"], name: "index_categories_videos_on_video_id_and_category_id"
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
