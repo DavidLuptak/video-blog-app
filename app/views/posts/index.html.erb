@@ -14,11 +14,14 @@
 
       <tr>
         <td>
+          <!--
           <div class="yt_video thumbnail">
             <%= link_to image_tag("https://img.youtube.com/vi/#{post.video.uid}/mqdefault.jpg", alt: post.video.title,
                                   class: 'img-rounded'),
                         "https://www.youtube.com/watch?v=#{post.video.uid}", target: '_blank' %>
           </div>
+          -->
+          <iframe width="280" height="157" src="https://www.youtube.com/embed/<%= post.video.uid %>" frameborder="0" allowfullscreen></iframe>
         </td>
         <td align="center">
           <div class="post-title" >
