@@ -2,14 +2,14 @@
   <h2 class = 'text-center'>Welcome!</h2>
   <p class = 'text-center'>To add new awesome videos you need to login using your email or google account.</p>
   <div class = 'text-center'>
-	  <div class ="btn btn-info offset3 span2" >
-	  	<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+	  <div class ="btn btn-info btn-xs offset3 span2" >
+	  	<%= link_to "Login", new_user_session_path, :class => 'btn'  %>
 	  </div>
-	  <div class ="btn btn-info offset3 span2" >
-	  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
+	  <div class ="btn btn-info btn-xs offset3 span2" >
+	  <%= link_to "Sign up", new_user_registration_path, :class => 'btn'  %>
 	  </div>
-	  <div class ="btn btn-info offset3 span2" >
-	  <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), :class => 'navbar-link' %>
+	  <div class ="btn btn-info btn-xs offset3 span2" >
+	  <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), :class => 'btn' %>
 	  </div>
   </div>
 </div>
