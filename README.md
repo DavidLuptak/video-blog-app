@@ -19,11 +19,11 @@ It's final project for course [Development in Ruby](https://github.com/municz/st
 ## Installation & Usage
 ### Google API Setup
 Refers to https://github.com/zquestz/omniauth-google-oauth2#google-api-setup.
-(IMHO is not necessary the last step)
+(IMHO, the last step is not necessary)
 
 ### Google API Credentials Setup
 On the Create client ID page select `Web application` as an application type. In the restrictions section, type `http://localhost:3000` into the field Authorized JavaScript origins, and `http://localhost:3000/users/auth/google_oauth2/callback` into the field Authorized redirect URIs.
-Click Create and in your IDE define environment variables, particularly for this project:
+Click Create and define environment variables in your IDE, particularly for this project:
 ```
 GOOGLE_CLIENT_ID = <your client ID>
 GOOGLE_CLIENT_SECRET = <your client secret>.
@@ -31,7 +31,7 @@ GOOGLE_CLIENT_SECRET = <your client secret>.
 Finally, start rails development server at [http://localhost:3000](http://localhost:3000).
 
 ### YouTube API Setup
-Refers to https://github.com/Fullscreen/yt#configuring-your-app. We just need to retrieve public data from YouTube, so Server API key is enough for now. Particularly for this project, define environment variable:
+Refers to https://github.com/Fullscreen/yt#configuring-your-app. We just need to retrieve public data from YouTube, so Server API key is enough so far. Particularly for this project, define environment variable:
 ```
 API_KEY = <your API key>
 ```
