@@ -37,4 +37,4 @@ API_KEY = <your API key>
 ```
 
 ## Heroku deployment
-Application will be available at heroku server.
+Application is available at http://peaceful-eyrie-28867.herokuapp.com/.
