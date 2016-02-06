@@ -1,10 +1,64 @@
 <h1>Listing Posts</h1>
+<table>
+  <tr>
+    <td>
+      <div >
+        <p> <h3> Search by title: </h3> </p>
+        <!-- When submit the form, the view rendered will be the index view of our articles resource -->
+        <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+        <div>
+          <%= text_field_tag :title, params[:title], class: "span2" %>
+          <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
+           of using a Rails form helper -->
+           <button class="btn" type="submit">Search</button>
+         </div>
+         <% end %>
+         <%= yield %>
+       </div>
+     </td>
 
-<% if user_signed_in? %>
+<td>
+<div>
+  <p> <h3> Search by author: </h3> </p>
+  <!-- When submit the form, the view rendered will be the index view of our articles resource -->
+  <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+  <div>
+      <%= text_field_tag :author, params[:author], class: "span2" %>
+      <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
+           of using a Rails form helper -->
+      <button class="btn" type="submit">Search</button>
+    </div>
+  <% end %>
+  <%= yield %>
+</div>
+</td>
+
+<td>
+<div>
+  <p> <h3> Search by description: </h3> </p>
+  <!-- When submit the form, the view rendered will be the index view of our articles resource -->
+  <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+  <div>
+      <%= text_field_tag :description, params[:description], class: "span2" %>
+      <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
+           of using a Rails form helper -->
+      <button class="btn" type="submit">Search</button>
+    </div>
+  <% end %>
+  <%= yield %>
+</div>
+</td>
+
+<td width="25%" align="right">
+  <% if user_signed_in? %>
   <% if can? :create, Post %>
     <%= link_to 'New Post', new_post_path, class:"btn btn-default"  %>
   <% end %>
 <% end %>
+</td>
+</tr>
+</table>
+
 </br>
 </br>
 
@@ -29,15 +83,15 @@
           <BR />
 
           <div>
-            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                 <%= post.video.like_count %>
           </div>
-          <div> 
-            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> 
+          <div>
+            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
                 <%= post.video.dislike_count %>
           </div>
-          <div> 
-            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 
+          <div>
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                 <%= post.video.view_count %>
           </div>
           <BR />
@@ -61,7 +115,7 @@
         <td align="center">
           <div><%= link_to 'Show', post, class:"btn btn-default" %></div>
           </br>
-          <div>  
+          <div>
             <% if can? :update, post %>
               <%= link_to 'Edit', edit_post_path(post) , class:"btn btn-default"  %>
             <% end %>

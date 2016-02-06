@@ -6,8 +6,10 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @posts = Post.all.select{ |p| p.title.include?(params[:title])} unless params[:title].nil?
+    @posts = Post.all.select{ |p| User.find(p.user_id).email.include?(params[:author])} unless params[:author].nil?
+    @posts = Post.all.select{ |p| p.description.include?(params[:description])} unless params[:description].nil?
   end
-
   # GET /posts/1
   # GET /posts/1.json
   def show
