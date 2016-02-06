@@ -189,6 +189,8 @@ GEM
       rdoc (~> 4.0)
     simple_hashtag (0.1.9)
       rails (> 3.2.0)
+    socialization (1.2.0)
+      activerecord
     spring (1.6.2)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -242,6 +244,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_hashtag
+  socialization
   spring
   sqlite3
   turbolinks

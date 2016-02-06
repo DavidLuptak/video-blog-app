@@ -9,6 +9,7 @@ gem 'yt', '~> 0.25.5'
 gem 'rails-observers'
 gem 'simple_hashtag'
 gem 'exception_notification'
+gem 'socialization'
 
 gem 'rubocop', require: false
 

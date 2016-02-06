@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   rolify
-
+  acts_as_liker
   after_create :assign_default_role
 
   # Include default devise modules. Others available are:
