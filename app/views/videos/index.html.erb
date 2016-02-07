@@ -1,70 +1,14 @@
-<p id="notice"><%= notice %></p>
 <div class="container">
-<h1 class="text-center alert">Categories</h1>
-<div class="row">
-<div class="col-xs-12 text-center">
+  <h1 class="text-center alert">Categories</h1>
+  <div class="row">
+    <div class="col-xs-12 text-center">
       <% @categories.each do |cat| %>
-      <a class="btn btn-default" href='/videos/filter/<%=cat.name%>'>&nbsp <%= cat.name %> &nbsp </a>
+        <a class="btn btn-default" href='/videos/filter/<%= cat.name %>'><%= cat.name %></a>
       <% end %>
     </div>
-
-</div>
-</div>
-<!--
-<table>
-  <thead>
-    <tr>
-      <th>Link</th>
-      <th>Title</th>
-      <th>Uid</th>
-      <th>Published at</th>
-      <th>Thumbnail url</th>
-      <th>Category title</th>
-      <th>View count</th>
-      <th>Like count</th>
-      <th>Dislike count</th>
-      <th>Duration</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-        <td><%= video.link %></td>
-        <td><%= video.title %></td>
-        <td><%= video.uid %></td>
-        <td><%= video.published_at %></td>
-        <td><%= video.thumbnail_url %></td>
-        <td><%= video.category_title %></td>
-        <td><%= video.view_count %></td>
-        <td><%= video.like_count %></td>
-        <td><%= video.dislike_count %></td>
-        <td><%= video.duration %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td>
-          <% if can? :manage, Video %>
-            <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
--->
-<br>
-
-<!--<%= link_to 'New Video', new_video_path %>-->
-
-<!--<div class="jumbotron">
-  <div class="container">
-    <h1>Share your videos with the world!</h1>
-    <p>Click the button below to share your video from YouTube.</p>
-    <p>
-      <%= link_to 'Add video now!', new_video_path, class: 'btn btn-primary btn-lg' %>
-    </p>
   </div>
-</div> -->
+</div>
+<br>
 
 <% if @videos.any? %>
     <div class="container">
