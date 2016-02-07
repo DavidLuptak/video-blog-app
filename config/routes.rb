@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   get 'hashtags/',         to: 'hashtags#index',     as: :hashtags
   get 'hashtags/:hashtag', to: 'hashtags#show',      as: :hashtag
 
-  resources :videos, only: [:index, :show, :new, :create, :destroy]
+  resources :videos, only: [:index, :show, :new, :create, :destroy] do
+    get 'filter/:name' => 'videos#filter', on: :collection
+  end
   resources :posts do
     resources :comments
   end
@@ -14,7 +16,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'page#index'
-  get "/videos/filter/:name" => "videos#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -6,9 +6,13 @@ class VideosController < ApplicationController
   def index
     @videos = Video.order('created_at DESC')
     @categories = Category.all
-    @videos= params[:name].nil? ? Video.all : @videos.select{|v| v.category_title == params[:name]}
   end
 
+  def filter
+    @videos = Category.find_by_name(params[:name]).videos
+    @categories = Category.all
+    render :index
+  end
 
   # GET /videos/1
   # GET /videos/1.json
