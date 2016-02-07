@@ -5,8 +5,7 @@ class HashtagsController < ApplicationController
 
   def show
     @hashtag = SimpleHashtag::Hashtag.find_by_name(hash_params)
-    # @hashtagged = @hashtag.hashtaggables if @hashtag
-    @posts = @hashtag.hashtaggables
+    @posts = @hashtag.hashtaggables.sort_by(&:updated_at).reverse
 
     render 'posts/index'
   end

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order('updated_at DESC')
     @posts = Post.all.select{ |p| p.title.include?(params[:title])} unless params[:title].nil?
     @posts = Post.all.select{ |p| User.find(p.user_id).email.include?(params[:author])} unless params[:author].nil?
     @posts = Post.all.select{ |p| p.description.include?(params[:description])} unless params[:description].nil?

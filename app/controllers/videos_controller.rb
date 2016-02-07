@@ -9,7 +9,7 @@ class VideosController < ApplicationController
   end
 
   def filter
-    @videos = Category.find_by_name(params[:name]).videos
+    @videos = Category.find_by_name(params[:name]).videos.order('updated_at DESC')
     @categories = Category.all
     render :index
   end
