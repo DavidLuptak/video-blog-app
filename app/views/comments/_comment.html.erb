@@ -5,11 +5,9 @@
       </strong>
       <% if user_signed_in?  %>
       	<% if  current_user.likes?(comment) %>
-      		<button class="btn btn-xs" type="submit">Unlike</button>
-      		<!-- ADD FUNCTIONALITY FOR UNLIKE current_user.unlike!(comment)-->
+      		<%= link_to('Unlike', unlike_comment_path(comment), method: :post) %>
       	<% else %>
-      		<button class="btn btn-xs" type="submit">Like</button>
-      		<!-- ADD FUNCTIONALITY FOR LIKE current_user.like!(comment)-->
+      		<%= link_to('Like', like_comment_path(comment), method: :post) %> 
       	<% end %>
       <% end %>
 

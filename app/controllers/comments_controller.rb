@@ -33,6 +33,17 @@ class CommentsController < ApplicationController
     redirect_to @post
   end
 
+  def like
+    comment = Comment.find(params[:id])
+    current_user.like!(comment)
+    redirect_to comment.post
+  end
+
+  def unlike
+    comment = Comment.find(params[:id])
+    current_user.unlike!(comment)
+    redirect_to comment.post
+  end
 
   private
 
@@ -45,5 +56,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:body)
   end
-
 end
