@@ -15,6 +15,11 @@
 
       <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
       <%= comment.likers_count %>
+
+      <% if can? :destroy, comment %>
+        <%= link_to 'Destroy', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-xs"  %>
+      <% end %>
+
       <br/>
       <%= comment.body %>
     </p>

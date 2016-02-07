@@ -25,6 +25,15 @@ class CommentsController < ApplicationController
     redirect_to @post
   end
 
+  def destroy
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    flash[:default] = 'Comment was successfully destroyed.'
+    redirect_to @post
+  end
+
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

@@ -10,6 +10,7 @@ class Ability
       can :read, Post
       can :create, Post
       can :manage, Post, user: user
+      can :manage, Comment, user: user
     end
     #
     # The first argument to `can` is the action you are giving the user
