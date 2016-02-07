@@ -17,7 +17,7 @@
       <%= comment.likers_count %>
 
       <% if can? :destroy, comment %>
-        <%= link_to 'Destroy', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-xs"  %>
+        <%= link_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-xs"  %>
       <% end %>
 
       <br/>
