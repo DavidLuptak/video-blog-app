@@ -81,7 +81,8 @@ Rails.application.configure do
     email: {
       email_prefix: '[VIDEO_BLOG_APP] ',
       sender_address: %{"exception" <notification@#{ENV['EMAIL_HOST']}>},
-      exception_recipients: %w(ENV['DEVELOPER_EMAIL'])
+      exception_recipients: %w(ENV['DEVELOPER_EMAIL']),
+      delivery_method: :smtp
     }
 
   config.action_mailer.smtp_settings = {
