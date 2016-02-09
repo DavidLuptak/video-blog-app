@@ -9,6 +9,17 @@ class PostsController < ApplicationController
     @posts = Post.all.select{ |p| p.title.include?(params[:title])} unless params[:title].nil?
     @posts = Post.all.select{ |p| User.find(p.user_id).email.include?(params[:author])} unless params[:author].nil?
     @posts = Post.all.select{ |p| p.description.include?(params[:description])} unless params[:description].nil?
+
+    if (!params[:sort_option].nil?)
+      if params[:sort_option] == "user"
+              @posts = Post.all.order("user_id") unless params[:sort_option].empty?
+              #@posts = Post.all.each{ |a,b| User.all.find(a.user_id).email <=> User.all.find(b.user_id).email}
+              #  @posts = Post.all.order('user.email DESC')
+      else @posts = Post.all.order(params[:sort_option].to_s + ' DESC') unless params[:sort_option].empty?
+      end
+    end
+    @listing = Post.new.attributes.keys[1..5]
+    @listing[2] = @listing[2][0..3]
   end
   # GET /posts/1
   # GET /posts/1.json

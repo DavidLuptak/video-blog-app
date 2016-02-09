@@ -48,8 +48,20 @@
   <%= yield %>
 </div>
 </td>
+<td>
+  <div >
+    <p><h3> Sort by: </h3> </p>
+    <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+    <div>
+        <%= select_tag :sort_option, options_for_select(@listing.each), include_blank: true,  class: "span2" %>
+        <button class="btn" type="submit">Sort</button>
+      </div>
+    <% end %>
+    <%= yield %>
+  </div>
+</td>
 
-<td width="25%" align="right">
+<td  align="right">
   <% if user_signed_in? %>
   <% if can? :create, Post %>
     <%= link_to 'New Post', new_post_path, class:"btn btn-default"  %>
