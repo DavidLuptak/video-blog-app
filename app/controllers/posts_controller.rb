@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     @listing = Post.new.attributes.keys[1..5]
     @listing[2] = @listing[2][0..3]
   end
-  
+
   # GET /posts/1
   # GET /posts/1.json
   def show
