@@ -7,11 +7,13 @@
         <!-- When submit the form, the view rendered will be the index view of our articles resource -->
         <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
         <div>
+          <center>
           <%= text_field_tag :title, params[:title], class: "span2" %>
           <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
            of using a Rails form helper -->
            <button class="btn" type="submit">Search</button>
-         </div>
+  </center>
+       </div>
          <% end %>
          <%= yield %>
        </div>
@@ -23,10 +25,12 @@
   <!-- When submit the form, the view rendered will be the index view of our articles resource -->
   <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
   <div>
+    <center>
       <%= text_field_tag :author, params[:author], class: "span2" %>
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
            of using a Rails form helper -->
       <button class="btn" type="submit">Search</button>
+    </center>
     </div>
   <% end %>
   <%= yield %>
@@ -39,10 +43,12 @@
   <!-- When submit the form, the view rendered will be the index view of our articles resource -->
   <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
   <div>
+    <center>
       <%= text_field_tag :description, params[:description], class: "span2" %>
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
            of using a Rails form helper -->
       <button class="btn" type="submit">Search</button>
+    </center>
     </div>
   <% end %>
   <%= yield %>
@@ -53,8 +59,11 @@
     <p><h3> Sort by: </h3> </p>
     <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
     <div>
+      <center>
         <%= select_tag :sort_option, options_for_select(@listing.each), include_blank: true,  class: "span2" %>
-        <button class="btn" type="submit">Sort</button>
+        <%= select_tag :order, options_for_select(['descending', 'ascending']), class: "span2" %>
+        <button class="btn" type="submit" >Sort</button>
+      </center>
       </div>
     <% end %>
     <%= yield %>
