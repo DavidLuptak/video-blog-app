@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206203805) do
+ActiveRecord::Schema.define(version: 20160209215518) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20160206203805) do
     t.string   "name"
     t.string   "uid"
     t.string   "url"
+    t.datetime "deleted_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
