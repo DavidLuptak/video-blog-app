@@ -5,12 +5,12 @@ class VideosController < ApplicationController
   # GET /videos.json
   def index
     @videos = Video.order('created_at DESC')
-    @categories = Category.all
+    @categories = Category.select { |category| !category.videos.empty? }
   end
 
   def filter
     @videos = Category.find_by_name(params[:name]).videos.order('updated_at DESC')
-    @categories = Category.all
+    @categories = Category.select { |category| !category.videos.empty? }
     render :index
   end
 
