@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:show, :edit, :destroy, :like, :unlike]
   # load_and_authorize_resource
 
   def index
@@ -27,30 +28,27 @@ class CommentsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
-    @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:default] = 'Comment was successfully destroyed.'
     redirect_to @post
   end
 
   def like
-    comment = Comment.find(params[:id])
-    current_user.like!(comment)
-    redirect_to comment.post
+    current_user.like!(@comment)
+    redirect_to @comment.post
   end
 
   def unlike
-    comment = Comment.find(params[:id])
-    current_user.unlike!(comment)
-    redirect_to comment.post
+    current_user.unlike!(@comment)
+    redirect_to @comment.post
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  # def set_comment
-  #   @comment = Comment.find(params[:id])
-  # end
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def comment_params
