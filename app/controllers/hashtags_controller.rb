@@ -1,6 +1,6 @@
 class HashtagsController < ApplicationController
   def index
-    @hashtags = SimpleHashtag::Hashtag.all
+    @hashtags = SimpleHashtag::Hashtag.select { |hashtag| !hashtag.hashtaggables.empty? }
   end
 
   def show
