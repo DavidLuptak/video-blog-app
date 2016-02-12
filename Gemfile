@@ -10,6 +10,7 @@ gem 'rails-observers'
 gem 'simple_hashtag'
 gem 'exception_notification'
 gem 'socialization'
+gem 'closure_tree'
 
 gem 'rubocop', require: false
 

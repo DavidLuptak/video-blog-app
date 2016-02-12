@@ -55,6 +55,9 @@ GEM
     builder (3.2.2)
     byebug (8.2.1)
     cancancan (1.13.1)
+    closure_tree (6.0.0)
+      activerecord (>= 4.1.0)
+      with_advisory_lock (>= 3.0.0)
     coderay (1.1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -217,6 +220,9 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    with_advisory_lock (3.0.0)
+      activerecord (>= 3.2)
+      thread_safe
     yt (0.25.20)
       activesupport
 
@@ -228,6 +234,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   cancancan
+  closure_tree
   coffee-rails (~> 4.1.0)
   devise
   exception_notification

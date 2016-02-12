@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209215518) do
+ActiveRecord::Schema.define(version: 20160211212243) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20160209215518) do
   add_index "categories_videos", ["category_id", "video_id"], name: "index_categories_videos_on_category_id_and_video_id"
   add_index "categories_videos", ["video_id", "category_id"], name: "index_categories_videos_on_video_id_and_category_id"
 
+  create_table "comment_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "comment_anc_desc_udx", unique: true
+  add_index "comment_hierarchies", ["descendant_id"], name: "comment_desc_idx"
+
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
     t.integer  "user_id"
@@ -34,6 +43,7 @@ ActiveRecord::Schema.define(version: 20160209215518) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "likers_count", default: 0
+    t.integer  "parent_id"
   end
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"

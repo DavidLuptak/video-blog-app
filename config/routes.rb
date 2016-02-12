@@ -8,11 +8,12 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-  resources :comments do
+  resources :comments, only: [:index, :create] do
     member do
       post :like, :unlike
     end
   end
+  get '/posts/(:post_id)/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   resources :users, only: [:index]
 

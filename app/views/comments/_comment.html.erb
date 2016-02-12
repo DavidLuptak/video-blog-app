@@ -7,7 +7,7 @@
       	<% if  current_user.likes?(comment) %>
       		<%= link_to('Unlike', unlike_comment_path(comment), method: :post) %>
       	<% else %>
-      		<%= link_to('Like', like_comment_path(comment), method: :post) %> 
+      		<%= link_to('Like', like_comment_path(comment), method: :post) %>
       	<% end %>
       <% end %>
 
@@ -18,7 +18,14 @@
         <%= link_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-xs"  %>
       <% end %>
 
-      <br/>
-      <%= comment.body %>
-    </p>
+      <!--<br/>-->
+      <blockquote><%= comment.body %></blockquote>
+
+      <% if user_signed_in? %>
+        <% from_reply_form ||= nil %>
+        <% unless from_reply_form %>
+          <p><%= link_to 'reply', new_comment_path(@post, comment.id) %></p>
+        <% end %>
+      <% end %>
+    </p> <!--extra closing tab????-->
 <% end %>

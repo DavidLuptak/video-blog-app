@@ -10,7 +10,8 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = Comment.new
+    @comment = Comment.new(parent_id: params[:parent_id])
+    @post = Post.find(params[:post_id])
   end
 
   def edit
@@ -18,7 +19,15 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.new(comment_params)
+
+    if params[:comment][:parent_id].to_i > 0
+      parent = @post.comments.find_by_id(params[:comment].delete(:parent_id))
+      @comment = parent.children.build(comment_params)
+      @comment.post_id = @post.id
+    else
+      @comment = @post.comments.new(comment_params)
+    end
+
     @comment.user_id = current_user.id
 
     @comment.save
