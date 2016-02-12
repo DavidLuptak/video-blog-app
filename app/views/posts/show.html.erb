@@ -58,10 +58,17 @@
   </div>
 
 </div>
+
 <div align="right">
-<%= link_to 'Edit', edit_post_path(@post),class:"btn btn-default" %> 
-<%= link_to 'Back', posts_path,class:"btn btn-default" %>
+  <% if can? :update, @post %>
+      <%= link_to 'Edit', edit_post_path(@post) , class:"btn btn-warning"  %>
+  <% end %>
+  <% if can? :destroy, @post %>
+      <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"  %>
+  <% end %>
+  <%= link_to 'Back', posts_path, class:"btn btn-default" %>
 </div>
+
 </br>
 <!--<h2>Comments</h2>-->
 <div id="comments">
@@ -83,5 +90,3 @@
     <% end %>
   </a>
 </section>
-
-
