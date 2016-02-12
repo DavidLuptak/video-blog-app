@@ -5,10 +5,11 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <ul>
-          <li><strong>Google name:</strong> <%= current_user.name %></li>
+          <li><strong><%= current_user.uid.nil? ? 'Name:' : 'Google name:' %></strong> <%= current_user.name %></li>
           <li><strong>Email:</strong> <%= current_user.email %></li>
-          <!--<li><strong>Uid:</strong> <%= current_user.uid %></li>-->
-          <li><strong>Google+:</strong> <%= link_to current_user.url, current_user.url %></li>
+          <% unless current_user.uid.nil? %>
+            <li><strong>Google+:</strong> <%= link_to current_user.url, current_user.url %></li>
+          <% end %>
         </ul>
       </div>
     </div>
