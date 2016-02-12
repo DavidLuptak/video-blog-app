@@ -86,7 +86,7 @@ Rails.application.configure do
   Rails.application.config.middleware.use ExceptionNotification::Rack,
     email: {
       email_prefix: '[VIDEO_BLOG_APP] ',
-      sender_address: %{"exception" <notification@#{ENV['EMAIL_HOST']}>},
+      sender_address: %("exception" <notification@#{ENV['EMAIL_HOST']}>),
       exception_recipients: %w(ENV['DEVELOPER_EMAIL']),
       delivery_method: :smtp
     }
