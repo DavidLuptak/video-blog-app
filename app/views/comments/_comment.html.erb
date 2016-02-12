@@ -21,7 +21,7 @@
       <!--<br/>-->
       <blockquote><%= comment.body %></blockquote>
 
-      <% if user_signed_in? %>
+      <% if user_signed_in? && comment.root? %>
         <% from_reply_form ||= nil %>
         <% unless from_reply_form %>
           <p><%= link_to 'reply', new_comment_path(@post, comment.id) %></p>
