@@ -10,6 +10,8 @@ class HashtagsController < ApplicationController
     @listing = Post.new.attributes.keys[1..5]
     @listing[2] = @listing[2][0..3]
 
+    @hashtags = SimpleHashtag::Hashtag.select { |hashtag| !hashtag.hashtaggables.empty? }
+
     render 'posts/index'
   end
 
