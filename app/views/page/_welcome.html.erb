@@ -2,3 +2,10 @@
   <h1 class="small text-center">Anybody can share a video!</h1>
   <p class="text-muted text-right">..and it's simple.</p>
 </div>
+
+<p class="lead text-center">Go ahead and share one right now.</p>
+<div>
+  <%= link_to "Let\'s start!",
+              user_omniauth_authorize_path(:google_oauth2),
+              :class => 'btn btn-default btn-lg center-block' %>
+</div>
