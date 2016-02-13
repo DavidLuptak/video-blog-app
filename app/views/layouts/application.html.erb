@@ -30,9 +30,6 @@
         <li <% if current_page?(videos_path) %> class='active' <% end %>>
           <a href=<%= videos_path %>>Videos</a>
         </li>
-        <li <% if current_page?(hashtags_path) %> class='active' <% end %>>
-          <a href=<%= hashtags_path %>>Hashtags</a>
-        </li>
         <% if can? :manage, User %>
           <li <% if current_page?(users_path) %> class='active' <% end %>>
             <a href=<%= users_path %>>Users</a>
