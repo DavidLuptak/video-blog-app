@@ -15,3 +15,5 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap/dropdown
+//= require bootstrap.min.js
+//= require jquery.min.js

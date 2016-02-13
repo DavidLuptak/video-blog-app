@@ -1,100 +1,118 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h1 class="text-center panel-title" title="Hashtags">Find post by hashtags included in description</h1>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1 class="text-center panel-title" title="Hashtags">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_hashtags">
+          Find post by hashtags included in description
+        </a>
+      </h1>
+    </div>
+    <div id="collapse_hashtags" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <ul class="nav nav-pills text-center" role="tablist">
+          <% @hashtags.each do |hashtag| %>
+            <%= link_to hashtag.name, hashtag_path(hashtag.name), :class => 'btn btn-default' %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="panel-body">
-    <ul class="nav nav-pills text-center" role="tablist">
-      <% @hashtags.each do |hashtag| %>
-          <%= link_to hashtag.name, hashtag_path(hashtag.name) , :class => 'btn btn-default'%>
-      <% end %>
-    </ul>
-  </div>
-</div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h1 class="text-center panel-title" title="Searching & sorting options">Searching and sorting options</h1>
-  </div>
-  <div class="panel-body">
-    <table>
-      <tr>
-        <td>
-          <div>
-            <p><h3 class="text-center"> Search by title:</h3></p>
-            <!-- When submit the form, the view rendered will be the index view of our articles resource -->
-            <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
-                <div>
-                  <center>
-                    <%= text_field_tag :title, params[:title], class: "span2" %>
-                    <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
-                     of using a Rails form helper -->
-                    <button class="btn" type="submit">Search</button>
-                  </center>
-                </div>
-            <% end %>
-            <%= yield %>
-          </div>
-        </td>
-
-        <td>
-          <div>
-            <p><h3 class="text-center"> Search by author:</h3></p>
-            <!-- When submit the form, the view rendered will be the index view of our articles resource -->
-            <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
-                <div>
-                  <center>
-                    <%= text_field_tag :author, params[:author], class: "span2" %>
-                    <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1 class="text-center panel-title" title="Searching & sorting options">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_sas">
+          Searching and sorting options
+        </a>
+      </h1>
+    </div>
+    <div id="collapse_sas" class="panel-collapse collapse">
+      <div class="panel-body">
+        <table>
+          <tr>
+            <td>
+              <div>
+                <p>
+                <h3 class="text-center"> Search by title:</h3></p>
+                <!-- When submit the form, the view rendered will be the index view of our articles resource -->
+                <%= form_tag(posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+                    <div>
+                      <center>
+                        <%= text_field_tag :title, params[:title], class: "span2" %>
+                        <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
                          of using a Rails form helper -->
-                    <button class="btn" type="submit">Search</button>
-                  </center>
-                </div>
-            <% end %>
-            <%= yield %>
-          </div>
-        </td>
+                        <button class="btn" type="submit">Search</button>
+                      </center>
+                    </div>
+                <% end %>
+                <%= yield %>
+              </div>
+            </td>
 
-        <td>
-          <div>
-            <p><h3 class="text-center"> Search by description:</h3></p>
-            <!-- When submit the form, the view rendered will be the index view of our articles resource -->
-            <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
-                <div>
-                  <center>
-                    <%= text_field_tag :description, params[:description], class: "span2" %>
-                    <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
-                         of using a Rails form helper -->
-                    <button class="btn" type="submit">Search</button>
-                  </center>
-                </div>
-            <% end %>
-            <%= yield %>
-          </div>
-        </td>
-        <td>
-          <div>
-            <p><h3 class="text-center"> Sort by:</h3></p>
-            <%= form_tag( posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
-                <div>
-                  <center>
-                    <%= select_tag :sort_option, options_for_select(@listing.each), include_blank: true,  class: "span2" %>
-                    <%= select_tag :order, options_for_select(['descending', 'ascending']), class: "span2" %>
-                    <button class="btn" type="submit" >Sort</button>
-                  </center>
-                </div>
-            <% end %>
-            <%= yield %>
-          </div>
-        </td>
-      </tr>
-    </table>
+            <td>
+              <div>
+                <p>
+                <h3 class="text-center"> Search by author:</h3></p>
+                <!-- When submit the form, the view rendered will be the index view of our articles resource -->
+                <%= form_tag(posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+                    <div>
+                      <center>
+                        <%= text_field_tag :author, params[:author], class: "span2" %>
+                        <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
+                             of using a Rails form helper -->
+                        <button class="btn" type="submit">Search</button>
+                      </center>
+                    </div>
+                <% end %>
+                <%= yield %>
+              </div>
+            </td>
+
+            <td>
+              <div>
+                <p>
+                <h3 class="text-center"> Search by description:</h3></p>
+                <!-- When submit the form, the view rendered will be the index view of our articles resource -->
+                <%= form_tag(posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+                    <div>
+                      <center>
+                        <%= text_field_tag :description, params[:description], class: "span2" %>
+                        <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
+                             of using a Rails form helper -->
+                        <button class="btn" type="submit">Search</button>
+                      </center>
+                    </div>
+                <% end %>
+                <%= yield %>
+              </div>
+            </td>
+            <td>
+              <div>
+                <p>
+                <h3 class="text-center"> Sort by:</h3></p>
+                <%= form_tag(posts_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+                    <div>
+                      <center>
+                        <%= select_tag :sort_option, options_for_select(@listing.each), include_blank: true, class: "span2" %>
+                        <%= select_tag :order, options_for_select(['descending', 'ascending']), class: "span2" %>
+                        <button class="btn" type="submit">Sort</button>
+                      </center>
+                    </div>
+                <% end %>
+                <%= yield %>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 
 <div align="right">
   <% if user_signed_in? %>
     <% if can? :create, Post %>
-      <%= link_to 'New Post', new_post_path, class: 'btn btn-primary'%>
+      <%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
     <% end %>
   <% end %>
 </div>
@@ -104,7 +122,7 @@
 
 <table class="table table-striped">
   <tbody>
-    <% @posts.each do |post| %>
+  <% @posts.each do |post| %>
 
       <tr>
         <td>
@@ -119,26 +137,26 @@
         </td>
         <td align="left">
 
-          <BR />
-          <BR />
+          <BR/>
+          <BR/>
 
           <div>
             <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                <%= post.video.like_count %>
+            <%= post.video.like_count %>
           </div>
           <div>
             <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-                <%= post.video.dislike_count %>
+            <%= post.video.dislike_count %>
           </div>
           <div>
             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                <%= post.video.view_count %>
+            <%= post.video.view_count %>
           </div>
-          <BR />
-          <div><%= link_to '', post_path(post, :anchor => "comments"), class:"btn btn-default glyphicon glyphicon-comment" %></div>
+          <BR/>
+          <div><%= link_to '', post_path(post, :anchor => "comments"), class: "btn btn-default glyphicon glyphicon-comment" %></div>
         </td>
         <td align="center">
-          <div class="post-title" >
+          <div class="post-title">
             <h1><%= post.title %> </h1>
           </div>
           <div class="post-video-title">
@@ -153,22 +171,22 @@
         </td>
 
         <td align="center">
-          <div><%= link_to 'Show', post, class:"btn btn-default" %></div>
+          <div><%= link_to 'Show', post, class: "btn btn-default" %></div>
           </br>
           <div>
             <% if can? :update, post %>
-              <%= link_to 'Edit', edit_post_path(post) , class:"btn btn-default"  %>
+              <%= link_to 'Edit', edit_post_path(post), class: "btn btn-default" %>
             <% end %>
           </div>
           </br>
           <div>
             <% if can? :destroy, post %>
-              <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-default"  %>
+              <%= link_to 'Delete', post, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-default" %>
             <% end %>
           </div>
         </td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
