@@ -1,13 +1,24 @@
-<div class="container">
-  <h1 class="text-center alert">Categories</h1>
-  <div class="row">
-    <div class="col-xs-12 text-center">
-      <% @categories.each do |cat| %>
-        <a class="btn btn-default" href='/videos/filter/<%= cat.name %>'><%= cat.name %></a>
-      <% end %>
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1 class="text-center panel-title" title="Categories">
+        <a data-toggle="collapse" href="#collapse_cat">
+          Categories
+        </a>
+      </h1>
+    </div>
+    <div id="collapse_cat" class="panel-collapse collapse">
+    <div class="panel-body">
+      <ul class="nav nav-pills text-center" role="tablist">
+        <% @categories.each do |cat| %>
+          <a class="btn btn-default" href='/videos/filter/<%= cat.name %>'><%= cat.name %></a>
+        <% end %>
+      </ul>
+    </div>
     </div>
   </div>
 </div>
+
 <br>
 
 <% if @videos.any? %>
