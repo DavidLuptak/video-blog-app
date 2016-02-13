@@ -4,6 +4,8 @@
   <thead>
   <tr>
     <th>Registration date</th>
+    <th>Last sign in IP</th>
+    <th>Last sign in at</th>
     <th>Sign in count</th>
     <th>Email</th>
     <th>Role</th>
@@ -14,6 +16,8 @@
   <% @users.each do |user| %>
       <tr>
         <td><%= user.created_at.to_formatted_s(:long) %></td>
+        <td><%= user.last_sign_in_ip %></td>
+        <td><%= user.last_sign_in_at %></td>
         <td><%= user.sign_in_count %></td>
         <td><%= user.email %></td>
         <td><%= user.roles.first.name %></td>
