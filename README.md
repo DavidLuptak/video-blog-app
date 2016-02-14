@@ -13,7 +13,7 @@ It's final project for course [Development in Ruby](https://github.com/municz/st
 7. Videos could be sorted by categories (obtained from YouTube API).
 8. Embedded player of videos is available.
 9. Sorting of videos based on various attributes is performed.
-10. Users logged in via Google account can like the video (liking videos on YouTube) through this blog. [NYI]
+10. Users logged in via Google account can like the video (liking videos on YouTube) through this blog. [NYI][postponed]
 ```
 
 ## Installation & Usage
