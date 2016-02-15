@@ -9,16 +9,17 @@ class PostsController < ApplicationController
     @posts = @posts.select { |p| p.title.include?(params[:title]) } unless params[:title].nil?
     @posts = @posts.select { |p| User.find(p.user_id).email.include?(params[:author]) } unless params[:author].nil?
     @posts = @posts.select { |p| p.description.include?(params[:description]) } unless params[:description].nil?
+    order = if params[:order] == 'descending'
+              ' DESC'
+            else
+              ' ASC'
+            end
 
-    if params[:order] == 'descending'
-      order = ' DESC'
-    else order = ' ASC'
-    end
-
-    if !params[:sort_option].nil?
+    if params[:sort_option].present?
       if params[:sort_option] == 'user'
         @posts = Post.all.order('user_id' + order) unless params[:sort_option].empty?
-      else @posts = Post.all.order(params[:sort_option].to_s + order) unless params[:sort_option].empty?
+      else
+        @posts = Post.all.order(params[:sort_option].to_s + order) unless params[:sort_option].empty?
       end
     end
 
