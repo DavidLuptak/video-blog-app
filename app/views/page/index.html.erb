@@ -1,18 +1,21 @@
 <% if user_signed_in? %>
-    <div class="page-header">
-      <h1>Your profile</h1>
+    <% if can? :create, Post %>
+        <%= link_to 'New Post', new_post_path, class: 'btn btn-primary center-block' %>
+    <% end %>
+    <br>
+    <div>
+      <%= link_to 'View all posts',
+                  posts_path,
+                  :class => 'btn btn-default center-block' %>
     </div>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <ul>
-          <li><strong><%= current_user.uid.nil? ? 'Name:' : 'Google name:' %></strong> <%= current_user.name %></li>
-          <li><strong>Email:</strong> <%= current_user.email %></li>
-          <% unless current_user.uid.nil? %>
-            <li><strong>Google+:</strong> <%= link_to current_user.url, current_user.url %></li>
-          <% end %>
-        </ul>
-      </div>
+    <br>
+    <div>
+      <%= link_to 'View all my posts',
+                  user_index_path(current_user),
+                  :class => 'btn btn-default center-block' %>
     </div>
+
+    <%= render 'users/profile' %>
 <% else %>
     <%= render 'welcome' %>
 <% end %>

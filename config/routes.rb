@@ -13,8 +13,9 @@ Rails.application.routes.draw do
     end
   end
   get '/posts/(:post_id)/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
+  get '/posts/user/:user', to: 'posts#user_index', as: :user_index
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -29,6 +29,15 @@ class PostsController < ApplicationController
     @hashtags = SimpleHashtag::Hashtag.select { |hashtag| !hashtag.hashtaggables.empty? }
   end
 
+  def user_index
+    @posts = current_user.posts
+    @listing = Post.new.attributes.keys[1..5]
+    @listing[2] = @listing[2][0..3]
+    @hashtags = SimpleHashtag::Hashtag.select { |hashtag| !hashtag.hashtaggables.empty? }
+
+    render :index
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show
