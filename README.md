@@ -16,6 +16,22 @@ It's final project for course [Development in Ruby](https://github.com/municz/st
 10. Users logged in via Google account can like the video (liking videos on YouTube) through this blog. [NYI][postponed]
 ```
 
+## Code Example
+The following example focuses on callback action responsible for creation of association between Category and Video model, where `category_title` is attribute of Video model obtained from YouTube API, hence no manual nameing of the category is needed.  
+```ruby
+class Video < ActiveRecord::Base
+  has_and_belongs_to_many :category
+  
+  # some code ommitted
+  
+  after_save :check_category
+
+  def check_category
+    category << Category.find_or_create_by!(name: category_title)
+  end
+end
+```
+
 ## Installation & Usage
 ### Google API Setup
 Refers to https://github.com/zquestz/omniauth-google-oauth2#google-api-setup.
@@ -34,22 +50,6 @@ Finally, start rails development server at [http://localhost:3000](http://localh
 Refers to https://github.com/Fullscreen/yt#configuring-your-app. We just need to retrieve public data from YouTube, so Server API key is enough so far. Particularly for this project, define environment variable:
 ```
 API_KEY = <your API key>
-```
-
-## Code Example
-The following example focuses on callback action responsible for creation of association between Category and Video model, where `category_title` is attribute of Video model obtained from YouTube API, hence no manual nameing of the category is needed.  
-```ruby
-class Video < ActiveRecord::Base
-  has_and_belongs_to_many :category
-  
-  # some code ommitted
-  
-  after_save :check_category
-
-  def check_category
-    category << Category.find_or_create_by!(name: category_title)
-  end
-end
 ```
 
 ## Heroku deployment
