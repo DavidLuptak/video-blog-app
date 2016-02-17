@@ -36,5 +36,21 @@ Refers to https://github.com/Fullscreen/yt#configuring-your-app. We just need to
 API_KEY = <your API key>
 ```
 
+## Code Example
+The following example focuses on callback action responsible for creation of association between Category and Video model, where `category_title` is attribute of Video model obtained from YouTube API, hence no manual nameing of the category is needed.  
+```ruby
+class Video < ActiveRecord::Base
+  has_and_belongs_to_many :category
+  
+  # some code ommitted
+  
+  after_save :check_category
+
+  def check_category
+    category << Category.find_or_create_by!(name: category_title)
+  end
+end
+```
+
 ## Heroku deployment
 Application is available at http://peaceful-eyrie-28867.herokuapp.com/.
