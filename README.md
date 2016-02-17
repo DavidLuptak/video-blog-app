@@ -1,5 +1,5 @@
 # Video Blog App
-Video Blog is blog about videos, especially YouTube videos.
+Video Blog is blog about videos, especially YouTube videos. Alongside the slogan *Anybody can share a video!*, you can sign in and start writing posts about videos which you like to share with others. So, [let's start](http://peaceful-eyrie-28867.herokuapp.com/).  
 
 ## Motivation & Assignment
 It's final project for course [Development in Ruby](https://github.com/municz/study-materials/wiki).
